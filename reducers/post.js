@@ -1,7 +1,15 @@
 
 /* states */
 export const initialState = {
-  mainPosts: []
+  mainPosts: [{
+    User: {
+      id: 1,
+      nickname: 'guya'
+    },
+    content: 'new Post!',
+    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTdQ4sfPH_1NVTkLGd1kN_fUMbybg5ySOORwQ&usqp=CAU'
+  }],
+  imagePaths: []
 };
 
 /* action types */
