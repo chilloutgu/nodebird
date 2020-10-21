@@ -16,23 +16,27 @@ function Signup() {
   /* handlers */
   const onFinish = useCallback(() => {
     if (password !== passwordCheck) {
-      return setPasswordError(true);
+      setPasswordError(true);
+      return;
     }
 
     if (!term) {
       setTermError(true);
       return;
     }
+
+    /* signup logic */
+
   }, [password, passwordCheck, term]);
 
-  const onChangePasswordCheck = useCallback(({ target: { value } }) => {
-    setPasswordError(value !== password);
-    setPasswordCheck(value);
+  const onChangePasswordCheck = useCallback(e => {
+    setPasswordCheck(e.target.value);
+    setPasswordError(password !== e.target.value);
   }, [password]);
 
-  const onChangeTerm = useCallback((e) => {
-    setTermError(false);
+  const onChangeTerm = useCallback(e => {
     setTerm(e.target.checked);
+    setTermError(!e.target.checked);
   }, []);
 
   return (

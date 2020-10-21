@@ -3,22 +3,24 @@
 export const initialState = {
   isLoggedIn: false,
   user: {}
-};
-
-/* actions types */
-const LOG_IN = 'LOG_IN';
-const LOG_OUT = 'LOG_OUT';
-
-/* actions */
-const loginAction = {
-  type: LOG_IN,
-  data: {
-    nickname: 'guya'
-  }
 }
 
-const logoutAction = {
-  type: LOG_OUT
+/* actions types */
+export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
+
+/* action constructor */
+export const LogIn = user => {
+  return {
+    type: LOG_IN,
+    payload: user
+  };
+};
+
+export const LogOut = () => {
+  return {
+    type: LOG_OUT
+  };
 }
 
 /* reducer */
@@ -28,14 +30,14 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         isLoggedIn: true,
-        user: action.data
+        user: action.payload
       };
     case LOG_OUT:
       return {
         ...state,
         isLoggedIn: false,
         user: {}
-      };
+      }
     default:
       return {
         ...state

@@ -12,7 +12,6 @@ const ADD_DUMMY = 'ADD_DUMMY';
 const addPost = {
   type: ADD_POST,
   data: {
-
   }
 };
 

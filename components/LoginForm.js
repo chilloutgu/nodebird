@@ -3,13 +3,12 @@ import Link from 'next/link';
 import { Form, Input, Button } from 'antd';
 
 /* custom hooks */
-export const useInput = (initialValue = null) => {
-  const [value, setValue] = useState(initialValue);
-  const handler = useCallback(e => {
-    setValue(e.target.value);
-  }, []);
-  return [value, handler];
-};
+export const useInput = initialState => {
+  const [state, setState] = useState(initialState);
+  const onChange = useCallback(e => setState(e.target.value), []);
+
+  return [state, onChange];
+}
 
 function LoginForm() {
   /* states */
@@ -18,8 +17,8 @@ function LoginForm() {
 
   /* handlers */
   const onFinish = useCallback(() => {
-    console.log('id :: ', id);
-    console.log('password :: ', password);
+    console.log('user id :: ', id);
+    console.log('user password :: ', password);
   }, [id, password]);
 
   /* render */
